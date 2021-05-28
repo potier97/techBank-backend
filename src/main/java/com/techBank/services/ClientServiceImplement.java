@@ -1,14 +1,13 @@
 package com.techBank.services;
- 
+   
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Pageable; 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.techBank.entities.Client;
 import com.techBank.interfaces.ClientInterface;
-import com.techBank.services.ClientService;
 
 @Service
 public class ClientServiceImplement implements ClientService {
@@ -44,5 +43,26 @@ public class ClientServiceImplement implements ClientService {
 	@Transactional
 	public void deleteById(Long id){
 		clientInterface.deleteById(id);
-	} 
+	}
+	
+	@Override 
+	@Transactional
+	public Optional<Client> getByDocument(String document){
+        return clientInterface.findByDocument(document);
+    }
+ 
+	@Override
+	@Transactional
+    public boolean existByDocument(String document){
+        return clientInterface.existByDocument(document);
+    }
+
+	@Override
+	@Transactional
+    public  boolean existByMail(String mail){
+        return clientInterface.existByMail(mail);
+    }
+ 
+	
 }
+ 

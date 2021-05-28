@@ -24,5 +24,13 @@ public interface ClientService {
 	public Client save(Client account);
 	
 	public void deleteById(Long id);
+
+	public Optional<Client> getByDocument(String document);
+
+	public boolean existByDocument(String document);
+
+	public boolean existByMail(String mail);
+	
+	
 	 
 }
